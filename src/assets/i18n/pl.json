@@ -1,0 +1,11 @@
+{
+  "login": {
+    "title": "Logowanie",
+    "login": "Login",
+    "loginHint": "Login jest wymagany",
+    "password": "Hasło",
+    "passwordHint": "Hasło jest wymagane",
+    "loginButton": "Zaloguj",
+    "registerButton": "Załóż nowe konto"
+  }
+}

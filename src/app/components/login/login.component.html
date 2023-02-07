@@ -1,0 +1,38 @@
+<div class="page-container">
+  <form class="form-container" [formGroup]="form">
+    <h1 class="panelName"> {{ 'login.title' | translate}}</h1>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "login.login" | translate }}</mat-label>
+        <input
+          matInput
+          formControlName="login"
+          placeholder="{{ 'login.login' | translate }}"
+        />
+        <mat-error *ngIf="form.get('login')?.invalid">{{ "login.loginHint" | translate }}</mat-error>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "login.password" | translate }}</mat-label>
+        <input
+          type="password"
+          matInput
+          type="password"
+          formControlName="password"
+          placeholder="{{ 'login.password' | translate }}"
+        />
+        <mat-error *ngIf="form.get('password')?.invalid">{{ "login.passwordHint" | translate }}</mat-error>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <button mat-flat-button color="primary" [disabled]="form.invalid">{{'login.loginButton' | translate}}</button>
+    </p>
+    <p>
+      <button mat-flat-button>{{'login.registerButton' | translate}}</button>
+    </p>
+  </form>
+</div>
