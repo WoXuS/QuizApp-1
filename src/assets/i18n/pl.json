@@ -1,4 +1,10 @@
 {
+  "paginator": {
+    "itemsPerPageLabel": "Elementy na stronie:",
+    "nextPageLabel": "Następna strona",
+    "previousPageLabel": "Poprzednia strona",
+    "limitFromLabel": "z"
+  },
   "login": {
     "title": "Logowanie",
     "login": "Login",
@@ -7,5 +13,40 @@
     "passwordHint": "Hasło jest wymagane",
     "loginButton": "Zaloguj",
     "registerButton": "Załóż nowe konto"
+  },
+  "quiz": {
+    "list": {
+      "title": "Lista quizzów",
+      "name": "Nazwa",
+      "description": "Opis",
+      "isOpen": "Otwarty",
+      "openYes": "Tak",
+      "openNo": "Nie",
+      "btnEdit": "Edytuj quiz",
+      "btnStatistic": "Przeglądaj odpowiedzi",
+      "btnChangeIsOpen": "Zmień status otwarcia quizu",
+      "btnDelete": "Usuń quiz",
+      "removeType": "quiz",
+      "removeSuccess": "Pomyślnie usunięto quiz",
+      "removeError": "Nie udało się usunąć quizu!",
+      "changeIsOpenQuestion": "Czy na pewno chcesz zmienić status quizu \"{{name}}\" na {{status}}?",
+      "statusOpenYes": "otwarty",
+      "statusOpenNo": "nieotwarty",
+      "toggleOpenStatusSuccess": "Pomyślnie zmieniono status otwarcia quizu",
+      "toggleOpenStatusError": "Nie udało się zmienić statusu otwarcia quizu!"
+    }
+  },
+  "dialog": {
+    "ok": "OK",
+    "cancel": "Anuluj",
+    "remove": {
+      "question": "Czy na pewno usunąć {{type}} \"{{name}}\"?",
+      "content": "Tej operacji nie można cofnąć!",
+      "confirm": "Usuń"
+    },
+    "confirm": {
+      "title": "Potwierdź operację",
+      "confirm": "Tak"
+    }
   }
 }

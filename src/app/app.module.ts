@@ -6,13 +6,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { QuizModule } from './quiz/quiz.module';
 import { AdminModule } from './admin/admin.module';
+import { MainInterceptor } from './interceptors/main.interceptor';
+import { MaterialModule } from './material.module';
+import { SharedModule } from './shared/shared.module';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { MatTranslatedPaginator } from './shared/mat-translated-paginator';
 
 @NgModule({
   declarations: [
@@ -26,8 +29,8 @@ import { AdminModule } from './admin/admin.module';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatInputModule,
-    MatButtonModule,
+    MaterialModule,
+    SharedModule,
     AdminModule,
     QuizModule,
     TranslateModule.forRoot({
@@ -38,7 +41,14 @@ import { AdminModule } from './admin/admin.module';
       },
     }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MainInterceptor,
+      multi: true
+    },
+    { provide: MatPaginatorIntl, useClass: MatTranslatedPaginator }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
