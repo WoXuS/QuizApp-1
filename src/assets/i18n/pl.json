@@ -46,6 +46,26 @@
       "toggleOpenStatusSuccess": "Pomyślnie zmieniono status otwarcia quizu",
       "toggleOpenStatusError": "Nie udało się zmienić statusu otwarcia quizu!",
       "emptyList": "Nie znaleziono żadnych quizów w bazie"
+    },
+    "editor": {
+      "name": "Nazwa quizu",
+      "nameHint": "Nazwa quizu nie może być pusta",
+      "description": "Opis quizu",
+      "settings": "Ustawienia",
+      "randomOrder": "Wyświetlaj pytania w kolejności losowej",
+      "movingBetween": "Pozwalaj na przechodzenie pomiędzy pytaniami",
+      "showCorrect": "Pokazuj poprawne odpowiedzi",
+      "questions": "Pytania",
+      "addQuestion": "Dodaj pytanie",
+      "questionContent": "Treść pytania",
+      "questionContentHint": "Treść pytania musi posiadać tekst",
+      "answers": "Odpowiedzi",
+      "answerContent": "Odpowiedź",
+      "answerContentHint": "Treść odpowiedzi musi posiadać tekst",
+      "answerIsCorrect": "Poprawna",
+      "addAnswer": "Dodaj odpowiedź",
+      "saveChanges": "Zapisz zmiany",
+      "cancelEdit": "Anuluj edycję"
     }
   },
   "dialog": {

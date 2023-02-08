@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { ReactiveFormsModule } from "@angular/forms";
 import { TranslateModule } from "@ngx-translate/core";
 import { MaterialModule } from "../material.module";
 import { QuizEditorComponent } from "./components/quiz-editor/quiz-editor.component";
@@ -16,6 +17,7 @@ import { QuizRoutingModule } from "./quiz.routing";
     TranslateModule,
     QuizRoutingModule,
     MaterialModule,
+    ReactiveFormsModule,
   ],
   providers: [
 

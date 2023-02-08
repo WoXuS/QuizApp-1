@@ -1,0 +1,41 @@
+.inline-input {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+
+  mat-form-field {
+    flex-grow: 1;
+  }
+}
+
+.full-length {
+  display: flex;
+
+  mat-form-field {
+    flex-grow: 1;
+  }
+}
+
+.settings {
+  margin-bottom: 15px;
+
+  .setting-block {
+    display: block;
+    margin-bottom: 15px;
+  }
+}
+
+.questions {
+  .question {
+    margin-bottom: 15px;
+  }
+}
+
+.footer {
+  margin: 20px 0;
+
+  button {
+    margin-top: 20px;
+    margin-right: 10px;
+  }
+}
