@@ -1,0 +1,38 @@
+.toolbar-spacer {
+  flex-grow: 1;
+}
+
+.page-container {
+  height: 100%;
+}
+
+.page-content {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.sidenav {
+  min-width: 250px;
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .close-button {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .dummy-link:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.15);
+
+    &.foreground {
+      background-color: unset;
+      color: rgba(0, 0, 0, 0.2);
+    }
+  }
+}

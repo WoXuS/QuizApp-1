@@ -5,6 +5,14 @@
     "previousPageLabel": "Poprzednia strona",
     "limitFromLabel": "z"
   },
+  "toolbar": {
+    "user": {
+      "profile": "Mój profil",
+      "logout": "Wyloguj"
+    },
+    "quizList": "Lista quizów",
+    "quizAdd": "Dodaj nowy quiz"
+  },
   "login": {
     "title": "Logowanie",
     "login": "Login",

@@ -1,1 +1,42 @@
-<router-outlet></router-outlet>
+<mat-drawer-container hasBackdrop="true" autosize class="page-container">
+  <mat-drawer #drawer class="sidenav" mode="side">
+    <mat-list role="list">
+      <mat-list-item role="listitem"><mat-icon class="close-button dummy-link foreground" (click)="drawer.toggle()">close</mat-icon></mat-list-item>
+
+      <mat-list-item role="listitem" routerLink="./quiz/list" class="dummy-link" (click)="drawer.toggle()">
+        <div class="nav-item">
+          <mat-icon>subject</mat-icon>
+          {{'toolbar.quizList' | translate}}
+        </div>
+      </mat-list-item>
+      <mat-list-item role="listitem" routerLink="./quiz/new" class="dummy-link nav-item" (click)="drawer.toggle()">
+        <div class="nav-item">
+          <mat-icon>add-circle</mat-icon>
+          {{'toolbar.quizAdd' | translate}}
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Quiz App</span>
+      <span class="toolbar-spacer"></span>
+      <button mat-button [matMenuTriggerFor]="userMenu">
+        <mat-icon>person</mat-icon>
+        Test user
+      </button>
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item><mat-icon>manage_accounts</mat-icon> {{'toolbar.user.profile' | translate}}</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item><mat-icon>logout</mat-icon> {{'toolbar.user.logout' | translate}}</button>
+      </mat-menu>
+    </mat-toolbar>
+    <div class="page-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
