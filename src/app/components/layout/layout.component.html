@@ -37,6 +37,9 @@
     </mat-toolbar>
     <div class="page-content">
       <router-outlet></router-outlet>
+      <div class="main-loader" *ngIf="!loader.isPageLoaded">
+        <mat-spinner></mat-spinner>
+      </div>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>

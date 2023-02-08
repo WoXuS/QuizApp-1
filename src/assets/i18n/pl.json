@@ -5,6 +5,9 @@
     "previousPageLabel": "Poprzednia strona",
     "limitFromLabel": "z"
   },
+  "error": {
+    "getAPIdataError": "Nie udało się pobrać danych z serwera"
+  },
   "toolbar": {
     "user": {
       "profile": "Mój profil",
@@ -41,7 +44,8 @@
       "statusOpenYes": "otwarty",
       "statusOpenNo": "nieotwarty",
       "toggleOpenStatusSuccess": "Pomyślnie zmieniono status otwarcia quizu",
-      "toggleOpenStatusError": "Nie udało się zmienić statusu otwarcia quizu!"
+      "toggleOpenStatusError": "Nie udało się zmienić statusu otwarcia quizu!",
+      "emptyList": "Nie znaleziono żadnych quizów w bazie"
     }
   },
   "dialog": {

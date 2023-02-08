@@ -6,6 +6,7 @@ import { MatTableDataSource } from "@angular/material/table";
 import { TranslateService } from "@ngx-translate/core";
 import { take } from "rxjs";
 import { Quiz } from "src/app/models/quiz";
+import { LoaderService } from "src/app/services/loader.service";
 import { QuizService } from "src/app/services/quiz.service";
 import { ToastService } from "src/app/services/toast.service";
 import { ConfirmDialogComponent } from "src/app/shared/dialogs/confirm-dialog/confirm-dialog.component.";
@@ -25,11 +26,16 @@ export class QuizListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sorter!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  public get isPageLoaded(): boolean {
+    return this.loaderService.isPageLoaded;
+  }
+
   constructor(
     private quizService: QuizService,
     private dialog: MatDialog,
     private translateService: TranslateService,
     private toastService: ToastService,
+    private loaderService: LoaderService,
   ) {}
 
   public ngOnInit(): void {
@@ -42,8 +48,17 @@ export class QuizListComponent implements OnInit, AfterViewInit {
   }
 
   private refreshQuizzes(): void {
+    this.loaderService.beginLongAction();
     this.quizService.getUserQuizzes(1).pipe(take(1)).subscribe({
-      next: (data) => this.quizzes.data = data
+      next: (data) => {
+        this.quizzes.data = data;
+        this.loaderService.endLongAction();
+      },
+      error: (e) => {
+        console.error(e);
+        this.toastService.show(this.translateService.instant('error.getAPIdataError'));
+        this.loaderService.endLongAction();
+      }
     });
   }
 
