@@ -8,7 +8,7 @@ export class AuthInterceptor implements HttpInterceptor {
   private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNTgxOGVmYi1mMjhmLTQ0ODYtYTc4NC05ZjFlYjQ0ZjUxZTEiLCJuYW1lIjoiYWRtaW4iLCJqdGkiOiJhZjllM2JkYi00MjUzLTQxOTEtODk0Ni1mNTc3YTQ5ZmFhYjMiLCJyb2xlIjpbIkFkbWluIiwiVXNlciJdLCJuYmYiOjE2NzY4MTU2MTAsImV4cCI6MTY3NjgxNTkxMCwiaWF0IjoxNjc2ODE1NjEwfQ.KoDGPR8SrL1-raBAnJsDDRuHj5HW2DrHO5hryOv6oXU"; // todo
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNTgxOGVmYi1mMjhmLTQ0ODYtYTc4NC05ZjFlYjQ0ZjUxZTEiLCJuYW1lIjoiYWRtaW4iLCJqdGkiOiI3MWNjZThhZS1lNjgwLTRmNjQtYjU0Ny1lMGE3ZDBkNDUxZGQiLCJyb2xlIjpbIkFkbWluIiwiVXNlciJdLCJuYmYiOjE2NzY4MzQ1MzAsImV4cCI6MTY3NjgzNDgzMCwiaWF0IjoxNjc2ODM0NTMwfQ.HkqriajjOEPhWqZGSclacOHhEaR8xFKMYn9J5IbyFWU"; // todo
 
     if (!!token) {
       req = this.handleToken(req, token);

@@ -48,6 +48,8 @@
       "emptyList": "Nie znaleziono żadnych quizów w bazie"
     },
     "editor": {
+      "editTitle": "Edycja quizu",
+      "createTitle": "Tworzenie nowego quizu",
       "name": "Nazwa quizu",
       "nameHint": "Nazwa quizu nie może być pusta",
       "description": "Opis quizu",
@@ -65,7 +67,10 @@
       "answerIsCorrect": "Poprawna",
       "addAnswer": "Dodaj odpowiedź",
       "saveChanges": "Zapisz zmiany",
-      "cancelEdit": "Anuluj edycję"
+      "cancelEdit": "Anuluj edycję",
+      "createQuizError": "Wystąpił błąd podczas próby stworzenia quizu",
+      "updateQuizError": "Wystąpił błąd podczas próby zaktualizowania quizu",
+      "saved": "Zapisano quiz"
     }
   },
   "dialog": {

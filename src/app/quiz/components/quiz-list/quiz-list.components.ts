@@ -49,7 +49,7 @@ export class QuizListComponent implements OnInit, AfterViewInit {
 
   private refreshQuizzes(): void {
     this.loaderService.beginLongAction();
-    this.quizService.getUserQuizzes(1).pipe(take(1)).subscribe({
+    this.quizService.getUserQuizzes().pipe(take(1)).subscribe({
       next: (data) => {
         this.quizzes.data = data;
         this.loaderService.endLongAction();

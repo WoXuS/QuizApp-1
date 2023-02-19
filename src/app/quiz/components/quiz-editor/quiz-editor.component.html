@@ -1,5 +1,5 @@
-<ng-container>
-  <h1>Edycja quizu</h1>
+<ng-container *ngIf="isPageLoaded">
+  <h1 class="title">{{ 'quiz.editor.' + (isNewMode ? 'editTitle' : 'createTitle') | translate }}</h1>
   <form class="form-container" [formGroup]="form">
     <div class="inline-input">
       <h3>{{ "quiz.editor.name" | translate }}</h3>
@@ -48,8 +48,8 @@
               <div class="inline-input">
                 <h3>{{ "quiz.editor.questionContent" | translate }}</h3>
                 <mat-form-field appearance="outline">
-                  <input matInput formControlName="content" />
-                  <mat-error *ngIf="question.get('content')?.invalid">{{ "quiz.editor.questionContentHint" | translate }}</mat-error>
+                  <input matInput formControlName="text" />
+                  <mat-error *ngIf="question.get('text')?.invalid">{{ "quiz.editor.questionContentHint" | translate }}</mat-error>
                 </mat-form-field>
               </div>
             </form>
@@ -67,8 +67,8 @@
                     <div class="inline-input">
                       <mat-form-field appearance="outline">
                         <mat-label>{{ "quiz.editor.answerContent" | translate }}</mat-label>
-                        <input matInput formControlName="content" />
-                        <mat-error *ngIf="answer.get('content')?.invalid">{{ "quiz.editor.answerContentHint" | translate }}</mat-error>
+                        <input matInput formControlName="text" />
+                        <mat-error *ngIf="answer.get('text')?.invalid">{{ "quiz.editor.answerContentHint" | translate }}</mat-error>
                       </mat-form-field>
                       <mat-slide-toggle color="primary" formControlName="isCorrect">{{ 'quiz.editor.answerIsCorrect' | translate }}</mat-slide-toggle>
                     </div>
@@ -89,7 +89,7 @@
       <mat-divider></mat-divider>
 
       <button mat-raised-button color="primary" (click)="saveChanges()">{{ "quiz.editor.saveChanges" | translate }}</button>
-      <button mat-stroked-button>{{ "quiz.editor.cancelEdit" | translate }}</button>
+      <button mat-stroked-button (click)="cancelEdit()">{{ "quiz.editor.cancelEdit" | translate }}</button>
     </div>
   </form>
 </ng-container>
