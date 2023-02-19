@@ -4,11 +4,21 @@
 
 .inline-input {
   display: flex;
-  align-items: baseline;
+  align-items: stretch;
   gap: 10px;
 
   mat-form-field {
     flex-grow: 1;
+  }
+
+  .centered {
+    display: flex;
+    align-items: center;
+    padding-bottom: var(--mdc-typography-caption-line-height, 20px);
+
+    &.without-padding {
+      padding-bottom: unset;
+    }
   }
 }
 
@@ -41,5 +51,15 @@
   button {
     margin-top: 20px;
     margin-right: 10px;
+  }
+}
+
+.dummy-link:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.15);
+
+  &.foreground {
+    background-color: unset;
+    color: rgba(0, 0, 0, 0.2);
   }
 }

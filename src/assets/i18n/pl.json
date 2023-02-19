@@ -70,7 +70,9 @@
       "cancelEdit": "Anuluj edycję",
       "createQuizError": "Wystąpił błąd podczas próby stworzenia quizu",
       "updateQuizError": "Wystąpił błąd podczas próby zaktualizowania quizu",
-      "saved": "Zapisano quiz"
+      "saved": "Zapisano quiz",
+      "deleteQuestion": "Usuń pytanie",
+      "deleteAnswer": "Usuń odpowiedź"
     }
   },
   "dialog": {

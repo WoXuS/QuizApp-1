@@ -13,6 +13,7 @@ import { LoaderService } from "src/app/services/loader.service";
 import { QuestionService } from "src/app/services/question.service";
 import { QuizService } from "src/app/services/quiz.service";
 import { ToastService } from "src/app/services/toast.service";
+import { AnswerToDelete } from "./models/answer-to-delete";
 
 @Component({
   selector: 'app-quiz-editor',
@@ -35,6 +36,9 @@ export class QuizEditorComponent implements OnInit {
   public get isNewMode(): boolean {
     return !!this.quiz;
   }
+
+  private questionsToRemove: number[] = [];
+  private answersToRemove: AnswerToDelete[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -150,7 +154,26 @@ export class QuizEditorComponent implements OnInit {
 
   private saveQuestions(questions: QuestionFull[]): Promise<boolean> {
     return new Promise<boolean>(async resolve => {
-      // todo remove questions
+      while (this.questionsToRemove.length) {
+        const id: number = this.questionsToRemove.pop()!;
+        const result: boolean = await firstValueFrom(this.removeQuestion(id));
+        if (!result) {
+          this.questionsToRemove.push(id);
+          resolve(false);
+          return;
+        }
+      }
+
+      while (this.answersToRemove.length) {
+        const tuple: AnswerToDelete = this.answersToRemove.pop()!;
+        const result: boolean = await firstValueFrom(this.removeAnswer(tuple.questionId, tuple.answerId));
+        if (!result) {
+          this.answersToRemove.push(tuple);
+          resolve(false);
+          return;
+        }
+      }
+
       if (!questions) {
         resolve(true);
         return;
@@ -192,7 +215,6 @@ export class QuizEditorComponent implements OnInit {
 
   private saveAnswers(questionId: number, answers: Answer[]): Observable<boolean> {
     return new Observable<boolean>(observer => {
-      // todo remove answers
       if (!answers) {
         observer.next(true);
         return;
@@ -221,5 +243,51 @@ export class QuizEditorComponent implements OnInit {
 
   public cancelEdit(): void {
     this.router.navigate(['/quiz/list']);
+  }
+
+  public deleteQuestion(idx: number, question: AbstractControl): void {
+    const id: number = question.get('id')?.value;
+    if (!!id) {
+      this.questionsToRemove.push(id);
+    }
+    this.questionsFormArray.removeAt(idx);
+  }
+
+  public deleteAnswer(idx: number, question: AbstractControl, answer: AbstractControl): void {
+    const answerId: number = answer.get('id')?.value;
+    const questionId: number = question.get('id')?.value;
+    if (!!answerId && !!questionId) {
+      this.answersToRemove.push({
+        answerId,
+        questionId,
+      });
+    }
+    this.getFormArray(question.get('answers')).removeAt(idx);
+  }
+
+  private removeQuestion(questionId: number): Observable<boolean> {
+    return new Observable<boolean>(observer => {
+      this.questionService.removeQuestion(this.quiz!.id!, questionId).subscribe({
+        next: () => observer.next(true),
+        error: (e) => {
+          console.error(e);
+          observer.next(false);
+          observer.error(e);
+        }
+      });
+    });
+  }
+
+  private removeAnswer(questionId: number, answerId: number): Observable<boolean> {
+    return new Observable<boolean>(observer => {
+      this.answerService.removeAnswer(this.quiz!.id!, questionId, answerId).subscribe({
+        next: () => observer.next(true),
+        error: (e) => {
+          console.error(e);
+          observer.next(false);
+          observer.error(e);
+        }
+      });
+    });
   }
 }

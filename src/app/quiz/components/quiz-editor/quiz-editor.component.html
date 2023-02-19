@@ -41,16 +41,22 @@
     <h3>{{ 'quiz.editor.questions' | translate }}</h3>
 
     <div class="questions">
-      <ng-container *ngFor="let question of questionsFormArray.controls">
+      <ng-container *ngFor="let question of questionsFormArray.controls; index as i">
         <mat-card class="question">
           <mat-card-content>
             <form [formGroup]="getFormGroup(question)">
               <div class="inline-input">
-                <h3>{{ "quiz.editor.questionContent" | translate }}</h3>
+                <div class="centered without-padding">
+                  <h3>{{ "quiz.editor.questionContent" | translate }}</h3>
+                </div>
                 <mat-form-field appearance="outline">
                   <input matInput formControlName="text" />
                   <mat-error *ngIf="question.get('text')?.invalid">{{ "quiz.editor.questionContentHint" | translate }}</mat-error>
                 </mat-form-field>
+                <div class="centered">
+                  <mat-icon class="dummy-link foreground" matTooltip="{{ 'quiz.editor.deleteQuestion' | translate }}"
+                    (click)="deleteQuestion(i, question)">delete</mat-icon>
+                </div>
               </div>
             </form>
           </mat-card-content>
@@ -62,7 +68,7 @@
                   <mat-panel-title>{{ 'quiz.editor.answers' | translate }}</mat-panel-title>
                 </mat-expansion-panel-header>
 
-                <ng-container *ngFor="let answer of getFormArray(question.get('answers')).controls">
+                <ng-container *ngFor="let answer of getFormArray(question.get('answers')).controls; index as j">
                   <form [formGroup]="getFormGroup(answer)">
                     <div class="inline-input">
                       <mat-form-field appearance="outline">
@@ -70,7 +76,13 @@
                         <input matInput formControlName="text" />
                         <mat-error *ngIf="answer.get('text')?.invalid">{{ "quiz.editor.answerContentHint" | translate }}</mat-error>
                       </mat-form-field>
-                      <mat-slide-toggle color="primary" formControlName="isCorrect">{{ 'quiz.editor.answerIsCorrect' | translate }}</mat-slide-toggle>
+                      <div class="centered">
+                        <mat-slide-toggle color="primary" formControlName="isCorrect">{{ 'quiz.editor.answerIsCorrect' | translate }}</mat-slide-toggle>
+                      </div>
+                      <div class="centered">
+                        <mat-icon class="dummy-link foreground" matTooltip="{{ 'quiz.editor.deleteAnswer' | translate }}"
+                          (click)="deleteAnswer(j, question, answer)">close</mat-icon>
+                      </div>
                     </div>
                   </form>
                 </ng-container>

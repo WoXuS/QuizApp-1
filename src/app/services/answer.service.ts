@@ -19,4 +19,8 @@ export class AnswerService extends ApiService {
   public getQuestionsAnswers(quizId: number, questionId: number): Observable<Answer[]> {
     return this.http.get<Answer[]>(this.apiUrl + `quizzes/${quizId}/questions/${questionId}/answers`);
   }
+
+  public removeAnswer(quizId: number, questionId: number, answerId: number): Observable<undefined> {
+    return this.http.delete<undefined>(this.apiUrl + `quizzes/${quizId}/questions/${questionId}/answers/${answerId}`);
+  }
 }
