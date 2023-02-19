@@ -16,6 +16,7 @@ import { MaterialModule } from './material.module';
 import { SharedModule } from './shared/shared.module';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTranslatedPaginator } from './shared/mat-translated-paginator';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -42,11 +43,8 @@ import { MatTranslatedPaginator } from './shared/mat-translated-paginator';
     }),
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: MainInterceptor,
-      multi: true
-    },
+    { provide: HTTP_INTERCEPTORS, useClass: MainInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: MatPaginatorIntl, useClass: MatTranslatedPaginator }
   ],
   bootstrap: [AppComponent]

@@ -8,14 +8,15 @@ import { ApiService } from "./api.service";
 })
 export class QuizService extends ApiService {
   public getUserQuizzes(userId: number): Observable<Quiz[]> {
-    return this.http.get<Quiz[]>(this.apiUrl + `users/${userId}/quizzes`);
+    return this.http.get<Quiz[]>(this.apiUrl + `quizzes`);
   }
 
-  public removeQuiz(userId: number, quizId: number): Observable<undefined> {
-    return this.http.delete<undefined>(this.apiUrl + `users/${userId}/quizzes/${quizId}`);
+  public removeQuiz(quizId: number): Observable<undefined> {
+    return this.http.delete<undefined>(this.apiUrl + `quizzes/${quizId}`);
   }
 
-  public toggleQuizOpenStatus(userId: number, quizId: number): Observable<undefined> {
-    return this.http.put<undefined>(this.apiUrl + `users/${userId}/quizzes/${quizId}/open`, { observe: 'response' });
+  public toggleQuizOpenStatus(isOpen: boolean, quizId: number): Observable<undefined> {
+    const status: string = isOpen ? 'close' : 'open';
+    return this.http.patch<undefined>(this.apiUrl + `quizzes/${quizId}/${status}`, { observe: 'response' });
   }
 }

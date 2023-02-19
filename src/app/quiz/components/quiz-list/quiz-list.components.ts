@@ -78,7 +78,7 @@ export class QuizListComponent implements OnInit, AfterViewInit {
     dialog.afterClosed().subscribe({
       next: (result) => {
         if (result) {
-          this.quizService.removeQuiz(1, quizId).pipe(take(1)).subscribe({
+          this.quizService.removeQuiz(quizId).pipe(take(1)).subscribe({
             next: () => {
               this.toastService.show(this.translateService.instant('quiz.list.removeSuccess'));
               this.refreshQuizzes();
@@ -109,7 +109,7 @@ export class QuizListComponent implements OnInit, AfterViewInit {
     dialog.afterClosed().subscribe({
       next: (result) => {
         if (result) {
-          this.quizService.toggleQuizOpenStatus(1, quizId).pipe(take(1)).subscribe({
+          this.quizService.toggleQuizOpenStatus(quiz.isOpen, quizId).pipe(take(1)).subscribe({
             next: () => {
               this.toastService.show(this.translateService.instant('quiz.list.toggleOpenStatusSuccess'));
               quiz.isOpen = !quiz.isOpen;
