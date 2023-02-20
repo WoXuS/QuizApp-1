@@ -23,7 +23,11 @@
     "password": "Hasło",
     "passwordHint": "Hasło jest wymagane",
     "loginButton": "Zaloguj",
-    "registerButton": "Załóż nowe konto"
+    "registerButton": "Załóż nowe konto",
+    "loginError": "Nieprawidłowy login lub hasło",
+    "loginSuccess": "Poprawnie zalogowano",
+    "sessionExpired": "Twoja sesja wygasła. Proszę zalogować się ponownie",
+    "loggedOut": "Pomyślnie wylogowano"
   },
   "quiz": {
     "list": {

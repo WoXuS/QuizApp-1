@@ -29,7 +29,7 @@
     </p>
 
     <p>
-      <button mat-flat-button color="primary" [disabled]="form.invalid">{{'login.loginButton' | translate}}</button>
+      <button mat-flat-button color="primary" [disabled]="form.invalid" (click)="login()">{{'login.loginButton' | translate}}</button>
     </p>
     <p>
       <button mat-flat-button>{{'login.registerButton' | translate}}</button>

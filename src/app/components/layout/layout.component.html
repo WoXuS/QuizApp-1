@@ -32,7 +32,7 @@
       <mat-menu #userMenu="matMenu">
         <button mat-menu-item><mat-icon>manage_accounts</mat-icon> {{'toolbar.user.profile' | translate}}</button>
         <mat-divider></mat-divider>
-        <button mat-menu-item><mat-icon>logout</mat-icon> {{'toolbar.user.logout' | translate}}</button>
+        <button mat-menu-item (click)="logOut()"><mat-icon>logout</mat-icon> {{'toolbar.user.logout' | translate}}</button>
       </mat-menu>
     </mat-toolbar>
     <div class="page-content">

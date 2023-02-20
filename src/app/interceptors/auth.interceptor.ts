@@ -1,23 +1,35 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpStatusCode } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { TranslateService } from "@ngx-translate/core";
 import { BehaviorSubject, catchError, filter, Observable, switchMap, take, throwError } from "rxjs";
+import { LoginResult } from "../models/login-result";
+import { AuthService } from "../services/auth.service";
+import { ToastService } from "../services/toast.service";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   private isRefreshing = false;
   private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
-  public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNTgxOGVmYi1mMjhmLTQ0ODYtYTc4NC05ZjFlYjQ0ZjUxZTEiLCJuYW1lIjoiYWRtaW4iLCJqdGkiOiIxNjdjNWU1Zi1lODA2LTQ0MDItODQ1Mi0wNzE4ZjdmM2I2NDgiLCJyb2xlIjpbIkFkbWluIiwiVXNlciJdLCJuYmYiOjE2NzY4MzcyODYsImV4cCI6MTY3Njg3MzU4NiwiaWF0IjoxNjc2ODM3Mjg2fQ.gDUPke7sM0tCcsWMlf45tg2FKle2NbCIAzKquqKwkyU"; // todo
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private toastService: ToastService,
+    private translate: TranslateService,
+  ){}
 
-    if (!!token) {
+  public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const token: string | null = this.authService.getToken();
+
+    if (!!token && !this.isRefreshing) {
       req = this.handleToken(req, token);
     }
 
     return next.handle(req).pipe(
       catchError(error => {
         if (error instanceof HttpErrorResponse && error.status === HttpStatusCode.Unauthorized) {
-          // todo refresh token
+          return this.handleRefreshToken(req, next);
         }
         return throwError(() => error);
       })
@@ -37,8 +49,22 @@ export class AuthInterceptor implements HttpInterceptor {
       this.isRefreshing = true;
       this.refreshTokenSubject.next(null);
 
-      // todo
-      throw new Error();
+      return this.authService.refreshToken({
+        token: this.authService.getToken() || '',
+        refreshToken: this.authService.getRefreshToken() || ''
+      }).pipe(
+        switchMap((data: LoginResult) => {
+          this.isRefreshing = false;
+          this.refreshTokenSubject.next(data.token);
+          return next.handle(this.handleToken(request, data.token));
+        }),
+        catchError(e => {
+          this.isRefreshing = false;
+          this.authService.clearStorage();
+          this.router.navigate(['login']).then(() => this.toastService.show(this.translate.instant('login.sessionExpired')));
+          return throwError(() => e);
+        })
+      );
     } else {
       return this.refreshTokenSubject.pipe(
         filter(token => token !== null),
