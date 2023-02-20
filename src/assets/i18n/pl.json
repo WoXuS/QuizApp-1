@@ -79,6 +79,15 @@
       "saved": "Zapisano quiz",
       "deleteQuestion": "Usuń pytanie",
       "deleteAnswer": "Usuń odpowiedź"
+    },
+    "results": {
+      "title": "Wyniki quizu \"{{quizName}}\"",
+      "userName": "Użytkownik",
+      "endDate": "Data zakończenia",
+      "correctAnswers": "Poprawnych odpowiedzi",
+      "incorrectAnswers": "Niepoprawnych odpowiedzi",
+      "successRatio": "Współczynnik poprawnych odpowiedzi",
+      "emptyList": "Ten quiz nie posiada jeszcze żadnych zakończonych podejść"
     }
   },
   "dialog": {

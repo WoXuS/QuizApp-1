@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Quiz } from "../models/quiz";
 import { QuizInfo } from "../models/quiz-info";
+import { QuizResult } from "../models/quiz-result";
 import { ApiService } from "./api.service";
 
 @Injectable({
@@ -36,5 +37,9 @@ export class QuizService extends ApiService {
 
   public getQuizInfo(id: number): Observable<QuizInfo> {
     return this.http.get<QuizInfo>(this.apiUrl + `quizzes/${id}/info`);
+  }
+
+  public getQuizResults(id: number): Observable<QuizResult[]> {
+    return this.http.get<QuizResult[]>(this.apiUrl + `quizzes/${id}/results`);
   }
 }

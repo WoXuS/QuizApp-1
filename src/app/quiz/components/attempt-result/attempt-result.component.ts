@@ -7,7 +7,7 @@ import { QuizAttempt } from "src/app/models/quiz-attempt";
 import { ToastService } from "src/app/services/toast.service";
 import * as moment from 'moment';
 import { UserService } from "src/app/services/user.service";
-import { BehaviorSubject, Observable, take } from "rxjs";
+import { take } from "rxjs";
 
 @Component({
   selector: 'app-attempt-result',

@@ -9,12 +9,14 @@ import { AttemptComponent } from "./components/attempt/attempt.component";
 import { AttemptsListComponent } from "./components/attempts-list/attempts-list.component";
 import { QuizEditorComponent } from "./components/quiz-editor/quiz-editor.component";
 import { QuizListComponent } from "./components/quiz-list/quiz-list.components";
+import { QuizResultsComponent } from "./components/quiz-results/quiz-results.component";
 import { QuizRoutingModule } from "./quiz.routing";
 
 @NgModule({
   declarations: [
     QuizListComponent,
     QuizEditorComponent,
+    QuizResultsComponent,
     AttemptEntryComponent,
     AttemptComponent,
     AttemptsListComponent,
