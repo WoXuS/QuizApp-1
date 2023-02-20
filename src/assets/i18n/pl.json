@@ -171,5 +171,23 @@
       "User": "użytkownik",
       "Admin": "administrator"
     }
+  },
+  "admin": {
+    "logs": {
+      "title": "Dziennik zdarzeń systemu",
+      "event": "Zdarzenie",
+      "user": "Użytkownik",
+      "time": "Czas",
+      "status": "Powiodło się",
+      "emptyList": "Brak wpisów",
+      "statusOk": "Tak",
+      "statusFalse": "Nie",
+      "eventType": {
+        "authenticate": "Zalogowanie",
+        "refresh": "Odświeżenie tokenu",
+        "register": "Rejestracja",
+        "invalidate": "Wylogowanie"
+      }
+    }
   }
 }
