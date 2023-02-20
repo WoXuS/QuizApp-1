@@ -13,9 +13,10 @@
       "profile": "Mój profil",
       "logout": "Wyloguj"
     },
-    "quizList": "Lista quizów",
+    "quizList": "Lista moich quizów",
     "quizAdd": "Dodaj nowy quiz",
-    "attemptEntry": "Podejmij się quizu"
+    "attemptEntry": "Podejmij się quizu",
+    "attemptsList": "Lista moich podejść"
   },
   "login": {
     "title": "Logowanie",
@@ -110,6 +111,16 @@
       "saveAnswerError": "Nie udało się zapisać odpowiedzi",
       "finished": "Zapisano podejście do quizu",
       "alreadyClosed": "Podejście do tego quizu zostało już zakończone"
+    },
+    "list": {
+      "quizName": "Nazwa quizu",
+      "userName": "Twórca",
+      "status": "Status podejścia",
+      "statusOpen": "Otwarte",
+      "statusFinished": "Zakończone",
+      "emptyList": "Brak uruchomionych podejść",
+      "try": "Kontunuuj podejście",
+      "results": "Zobacz wyniki"
     }
   }
 }

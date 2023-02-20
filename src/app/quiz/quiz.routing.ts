@@ -1,9 +1,11 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AttemptResolver } from "../resolvers/attempt.resolver";
+import { AttemptsResolver } from "../resolvers/attempts.resolver";
 import { QuizResolver } from "../resolvers/quiz.resolver";
 import { AttemptEntryComponent } from "./components/attempt-entry/attempt-entry.component";
 import { AttemptComponent } from "./components/attempt/attempt.component";
+import { AttemptsListComponent } from "./components/attempts-list/attempts-list.component";
 import { QuizEditorComponent } from "./components/quiz-editor/quiz-editor.component";
 import { QuizListComponent } from "./components/quiz-list/quiz-list.components";
 
@@ -37,6 +39,13 @@ const routes: Routes = [
     component: AttemptComponent,
     resolve: {
       attempt: AttemptResolver,
+    }
+  },
+  {
+    path: 'attempts',
+    component: AttemptsListComponent,
+    resolve: {
+      attempts: AttemptsResolver,
     }
   },
 ];

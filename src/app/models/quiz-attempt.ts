@@ -7,4 +7,5 @@ export interface QuizAttempt {
   chosenAnswers: number[];
   isOpen: boolean;
   quizCopy: QuizFull;
+  userId: string;
 }

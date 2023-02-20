@@ -3,6 +3,18 @@
     <mat-list role="list">
       <mat-list-item role="listitem"><mat-icon class="close-button dummy-link foreground" (click)="drawer.toggle()">close</mat-icon></mat-list-item>
 
+      <mat-list-item role="listitem" routerLink="./quiz/try" class="dummy-link" (click)="drawer.toggle()">
+        <div class="nav-item">
+          <mat-icon>quiz</mat-icon>
+          {{'toolbar.attemptEntry' | translate}}
+        </div>
+      </mat-list-item>
+      <mat-list-item role="listitem" routerLink="./quiz/attempts" class="dummy-link" (click)="drawer.toggle()">
+        <div class="nav-item">
+          <mat-icon>checklist</mat-icon>
+          {{'toolbar.attemptsList' | translate}}
+        </div>
+      </mat-list-item>
       <mat-list-item role="listitem" routerLink="./quiz/list" class="dummy-link" (click)="drawer.toggle()">
         <div class="nav-item">
           <mat-icon>subject</mat-icon>
@@ -13,12 +25,6 @@
         <div class="nav-item">
           <mat-icon>add-circle</mat-icon>
           {{'toolbar.quizAdd' | translate}}
-        </div>
-      </mat-list-item>
-      <mat-list-item role="listitem" routerLink="./quiz/try" class="dummy-link" (click)="drawer.toggle()">
-        <div class="nav-item">
-          <mat-icon>quiz</mat-icon>
-          {{'toolbar.attemptEntry' | translate}}
         </div>
       </mat-list-item>
     </mat-list>

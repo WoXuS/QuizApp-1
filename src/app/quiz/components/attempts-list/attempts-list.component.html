@@ -1,0 +1,36 @@
+<table mat-table [dataSource]="attempts" class="mat-elevation-z8" matSort>
+
+  <ng-container matColumnDef="quizName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'attempt.list.quizName' | translate}}</th>
+    <td mat-cell *matCellDef="let element">{{element.quizCopy.name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="userName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'attempt.list.userName' | translate}}</th>
+    <td mat-cell *matCellDef="let element">{{getUserName(element.userId)}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'attempt.list.status' | translate}}</th>
+    <td mat-cell *matCellDef="let element">{{('attempt.list.status' + (element.isOpen ? 'Open' : 'Finished')) | translate}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="buttons">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <button *ngIf="element.isOpen" mat-icon-button color="primary" matTooltip="{{'attempt.list.try' | translate}}" routerLink="/quiz/attempt/{{element.id}}"><mat-icon>edit</mat-icon></button>
+      <button *ngIf="!element.isOpen" mat-icon-button color="primary" matTooltip="{{'attempt.list.results' | translate}}" routerLink="/quiz/result/{{element.id}}"><mat-icon>poll</mat-icon></button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" [colSpan]="displayedColumns.length">{{'attempt.list.emptyList' | translate}}</td>
+  </tr>
+</table>
+<mat-paginator
+  [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOptions">
+</mat-paginator>

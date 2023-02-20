@@ -38,7 +38,7 @@ export class AttemptComponent implements OnInit {
     this.attempt = this.route.snapshot.data['attempt'];
     console.log(this.attempt);
     if (!this.attempt.isOpen) {
-      this.router.navigate(['quiz/try']).then(() => this.toast.show(this.translate.instant('attempt.try.alreadyClosed')));
+      this.router.navigate([`quiz/result/${this.attempt.id}`]).then(() => this.toast.show(this.translate.instant('attempt.try.alreadyClosed')));
       return;
     }
     this.loadQuestion(this.getNextQuestionId());
@@ -100,7 +100,7 @@ export class AttemptComponent implements OnInit {
   private finishAttempt(): void {
     this.attemptService.closeAttempt(this.attempt.id).pipe(take(1)).subscribe({
       next: () => {
-        this.router.navigate(['quiz/try']).then(() => this.toast.show(this.translate.instant('attempt.try.finished')));
+        this.router.navigate([`quiz/result/${this.attempt.id}`]).then(() => this.toast.show(this.translate.instant('attempt.try.finished')));
       },
       error: (e) => {
         this.isLoading = false;

@@ -22,4 +22,8 @@ export class AttemptService extends ApiService {
   public closeAttempt(id: number): Observable<undefined> {
     return this.http.patch<undefined>(this.apiUrl + `attempts/${id}/close`, null);
   }
+
+  public getAllAttempts(): Observable<QuizAttempt[]> {
+    return this.http.get<QuizAttempt[]>(this.apiUrl + 'attempts');
+  }
 }
