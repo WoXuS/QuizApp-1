@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { AttemptResolver } from "../resolvers/attempt.resolver";
 import { QuizResolver } from "../resolvers/quiz.resolver";
 import { AttemptEntryComponent } from "./components/attempt-entry/attempt-entry.component";
 import { AttemptComponent } from "./components/attempt/attempt.component";
@@ -34,6 +35,9 @@ const routes: Routes = [
   {
     path: 'attempt/:id',
     component: AttemptComponent,
+    resolve: {
+      attempt: AttemptResolver,
+    }
   },
 ];
 

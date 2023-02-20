@@ -103,6 +103,13 @@
       "tryButton": "Podejmij się",
       "quizGetError": "Nie znaleziono takiego quizu",
       "quizCreateAttemptError": "Nie udało się przystąpić do quizu"
+    },
+    "try": {
+      "next": "Dalej",
+      "finish": "Zakończ",
+      "saveAnswerError": "Nie udało się zapisać odpowiedzi",
+      "finished": "Zapisano podejście do quizu",
+      "alreadyClosed": "Podejście do tego quizu zostało już zakończone"
     }
   }
 }

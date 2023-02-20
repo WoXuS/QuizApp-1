@@ -20,6 +20,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatSlideToggleModule,
     MatCardModule,
     MatProgressBarModule,
+    MatRadioModule,
   ],
   exports: [
     MatTableModule,
@@ -66,6 +68,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatSlideToggleModule,
     MatCardModule,
     MatProgressBarModule,
+    MatRadioModule,
   ]
 })
 export class MaterialModule {}
