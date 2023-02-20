@@ -10,6 +10,9 @@ import { UserService } from "src/app/services/user.service";
   styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent implements OnInit {
+  public isViewLoaded: boolean = false;
+  public isUserAdmin: boolean = false;
+
   public get userLogin(): string {
     if (!this.userService.currentUserName) {
       const userId: string = this.userService.getUserId(this.authService.getToken()!);
@@ -28,11 +31,22 @@ export class LayoutComponent implements OnInit {
 
   public ngOnInit(): void {
     this.authService.logOutObs.subscribe({
-      next: () => this.userService.currentUserName = ''
+      next: () => {
+        this.userService.currentUserName = '';
+        this.isUserAdmin = false;
+      }
+    });
+    this.userService.isUserAdmin().pipe(take(1)).subscribe({
+      next: (response) => this.isUserAdmin = response
     });
   }
 
   public logOut(): void {
     this.authService.signOut();
   }
+
+  public setActiveComponent(event: Component): void {
+    this.isViewLoaded = !!event;
+}
+
 }

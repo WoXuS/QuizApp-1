@@ -16,7 +16,13 @@
     "quizList": "Lista moich quizów",
     "quizAdd": "Dodaj nowy quiz",
     "attemptEntry": "Podejmij się quizu",
-    "attemptsList": "Lista moich podejść"
+    "attemptsList": "Lista moich podejść",
+    "admin": "Panel administracyjny"
+  },
+  "dashboard": {
+    "goToQuizzes": "Zobacz moje quizy",
+    "goToAttempts": "Zobacz moje podejścia",
+    "goToAdmin": "Panel administracyjny"
   },
   "login": {
     "title": "Logowanie",

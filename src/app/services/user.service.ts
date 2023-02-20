@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { map, Observable } from "rxjs";
+import { map, Observable, take } from "rxjs";
 import { Profile } from "../models/profile";
 import { SaveProfileDto } from "../models/save-profile-dto";
 import { ApiService } from "./api.service";
@@ -25,5 +25,14 @@ export class UserService extends ApiService {
 
   public saveUserData(data: SaveProfileDto): Observable<undefined> {
     return this.http.put<undefined>(this.apiUrl + 'account/credentials', data);
+  }
+
+  public isUserAdmin(): Observable<boolean> {
+    return new Observable<boolean>(observer => {
+      this.getProfile().pipe(take(1)).subscribe({
+        next: (profile) => observer.next(profile.roles.includes('Admin')),
+        error: () => observer.next(false)
+      });
+    });
   }
 }
