@@ -42,11 +42,13 @@ export class AttemptEntryComponent {
   }
 
   public confirmAttempt(): void {
-    this.attemptService.createAttempt(this.quiz!.id!).pipe(take(1)).subscribe({
+    this.isLoading = true;
+    this.attemptService.createAttempt(Number(this.quizIdText)).pipe(take(1)).subscribe({
       next: (attempt: QuizAttempt) => {
         this.router.navigate([`quiz/attempt/${attempt.id}`]);
       },
       error: (e) => {
+        this.isLoading = false;
         console.error(e);
         this.toast.show(this.translate.instant('attempt.entry.quizCreateAttemptError'));
       }

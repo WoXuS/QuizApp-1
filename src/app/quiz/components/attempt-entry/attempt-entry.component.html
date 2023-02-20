@@ -34,6 +34,6 @@
 </ng-template>
 
 <ng-template #quizDetailsButtons>
-  <button mat-flat-button color="primary">{{ 'attempt.entry.tryButton' | translate }}</button>
+  <button mat-flat-button color="primary" (click)="confirmAttempt()">{{ 'attempt.entry.tryButton' | translate }}</button>
   <button mat-button (click)="cancelQuiz()">{{ 'dialog.cancel' | translate }}</button>
 </ng-template>
