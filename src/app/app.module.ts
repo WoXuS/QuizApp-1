@@ -17,12 +17,14 @@ import { SharedModule } from './shared/shared.module';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTranslatedPaginator } from './shared/mat-translated-paginator';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
     LoginComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

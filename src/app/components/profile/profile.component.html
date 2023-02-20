@@ -1,0 +1,77 @@
+<br />
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ 'profile.profileData' | translate }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ 'profile.email' | translate:{ email: profile.email } }}</p>
+    <p>{{ 'profile.login' | translate:{ login: profile.userName } }}</p>
+    <p>{{ 'profile.userRoles' | translate }}<ng-container *ngFor="let role of profile.roles">{{ 'profile.role.' + role | translate }} </ng-container></p>
+  </mat-card-content>
+</mat-card>
+<br />
+<mat-card>
+  <form class="form-container" [formGroup]="form">
+    <mat-card-header>
+      <mat-card-title>{{ 'profile.updateData' | translate }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <br />
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ "profile.loginEdit" | translate }}</mat-label>
+          <input
+            matInput
+            formControlName="userName"
+            placeholder="{{ 'profile.loginEdit' | translate }}"
+          />
+          <mat-error *ngIf="form.get('userName')?.invalid">{{ "login.loginHint" | translate }}</mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ "profile.emailEdit" | translate }}</mat-label>
+          <input
+            matInput type="email"
+            formControlName="email"
+            placeholder="{{ 'profile.emailEdit' | translate }}"
+          />
+          <mat-error *ngIf="form.get('email')?.invalid">{{ "profile.emailHint" | translate }}</mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ "login.password" | translate }}</mat-label>
+          <input
+            type="password"
+            matInput
+            formControlName="password"
+            placeholder="{{ 'login.password' | translate }}"
+          />
+          <mat-error *ngIf="form.get('password')?.invalid">{{ "login.passwordHint" | translate }}</mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ "profile.passwordConfirm" | translate }}</mat-label>
+          <input
+            type="password"
+            matInput
+            formControlName="confirmPassword"
+            placeholder="{{ 'profile.passwordConfirm' | translate }}"
+          />
+          <mat-error *ngIf="form.get('confirmPassword')?.invalid">{{ "profile.passwordConfirmHint" | translate }}</mat-error>
+        </mat-form-field>
+      </p>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-button [disabled]="form.invalid" (click)="saveProfileData()">{{ 'profile.saveData' | translate }}</button>
+    </mat-card-actions>
+    <mat-card-footer>
+      <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+    </mat-card-footer>
+  </form>
+</mat-card>

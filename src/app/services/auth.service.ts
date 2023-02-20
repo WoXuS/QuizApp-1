@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
-import { Observable, take, tap } from "rxjs";
+import { Observable, Subject, take, tap } from "rxjs";
 import { LoginResult } from "../models/login-result";
 import { ApiService } from "./api.service";
 import { ToastService } from "./toast.service";
@@ -13,6 +13,11 @@ import { ToastService } from "./toast.service";
 export class AuthService extends ApiService {
   private readonly ACCESS_TOKEN_NAME = "accessToken";
   private readonly REFRESH_TOKEN_NAME = "refreshToken";
+  private logOutSubj = new Subject<void>();
+
+  public get logOutObs(): Observable<void> {
+    return this.logOutSubj.asObservable();
+  }
 
   public get isAuthenticated(): boolean {
     return !!this.getToken();
@@ -54,6 +59,7 @@ export class AuthService extends ApiService {
   public clearStorage(): void {
     localStorage.removeItem(this.ACCESS_TOKEN_NAME);
     localStorage.removeItem(this.REFRESH_TOKEN_NAME);
+    this.logOutSubj.next();
   }
 
   public signOut(): void {

@@ -146,5 +146,24 @@
       "questionCorrect": "Odpowiedź poprawna",
       "questionIncorrect": "Odpowiedź niepoprawna"
     }
+  },
+  "profile": {
+    "profileData": "Dane profilu",
+    "email": "Adres e-mail: {{email}}",
+    "login": "Nazwa użytkownika: {{login}}",
+    "updateData": "Aktualizacja danych",
+    "loginEdit": "Login",
+    "emailEdit": "Adres e-mail",
+    "emailHint": "Adres e-mail jest wymagany",
+    "passwordConfirm": "Potwierdź hasło",
+    "passwordConfirmHint": "To pole jest wymagane",
+    "saveData": "Zapisz profil",
+    "updateSuccess": "Poprawnie zaktualizowano dane profilu",
+    "updateError": "Nie udało się zaktualizować danych profilu",
+    "userRoles": "Role użytkownika: ",
+    "role": {
+      "User": "użytkownik",
+      "Admin": "administrator"
+    }
   }
 }
