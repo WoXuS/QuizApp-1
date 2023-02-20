@@ -27,6 +27,7 @@
 <ng-template #quizDetails>
   <p>{{ quiz!.description }}</p>
   <p>{{ 'attempt.entry.questionCount' | translate:{ count: quiz!.questionCount } }}</p>
+  <p *ngIf="quizAuthorName">{{ 'attempt.entry.quizAuthor' | translate:{ author: quizAuthorName } }}</p>
 </ng-template>
 
 <ng-template #idEntryButtons>

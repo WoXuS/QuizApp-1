@@ -7,6 +7,7 @@ import { QuizInfo } from "src/app/models/quiz-info";
 import { AttemptService } from "src/app/services/attempt.service";
 import { QuizService } from "src/app/services/quiz.service";
 import { ToastService } from "src/app/services/toast.service";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: 'app-attempt-entry',
@@ -17,6 +18,7 @@ export class AttemptEntryComponent {
   public quizIdText: string = '';
   public isLoading: boolean = false;
   public quiz: QuizInfo | null = null;
+  public quizAuthorName: string = '';
 
   constructor(
     private translate: TranslateService,
@@ -24,14 +26,26 @@ export class AttemptEntryComponent {
     private quizService: QuizService,
     private attemptService: AttemptService,
     private router: Router,
+    private userService: UserService,
   ) {}
 
   public loadQuizInfo(): void {
     this.isLoading = true;
     this.quizService.getQuizInfo(Number(this.quizIdText)).pipe(take(1)).subscribe({
       next: (quiz: QuizInfo) => {
-        this.quiz = quiz;
-        this.isLoading = false;
+        this.userService.getUserName(quiz.userId).pipe(take(1)).subscribe({
+          next: (name: string) => {
+            this.quizAuthorName = name;
+            this.quiz = quiz;
+            this.isLoading = false;
+          },
+          error: (e) => {
+            console.error(e);
+            this.quizAuthorName = '';
+            this.quiz = quiz;
+            this.isLoading = false;
+          }
+        });
       },
       error: (e) => {
         console.error(e);

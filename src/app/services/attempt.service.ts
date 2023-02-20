@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { AttemptResult } from "../models/attempt-result";
 import { QuizAttempt } from "../models/quiz-attempt";
 import { ApiService } from "./api.service";
 
@@ -25,5 +26,9 @@ export class AttemptService extends ApiService {
 
   public getAllAttempts(): Observable<QuizAttempt[]> {
     return this.http.get<QuizAttempt[]>(this.apiUrl + 'attempts');
+  }
+
+  public getAttemptResult(id: number): Observable<AttemptResult> {
+    return this.http.get<AttemptResult>(this.apiUrl + `attempts/${id}/result`);
   }
 }

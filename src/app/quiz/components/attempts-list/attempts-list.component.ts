@@ -30,7 +30,7 @@ export class AttemptsListComponent implements OnInit, AfterViewInit {
 
   public ngOnInit(): void {
     this.attempts.data = this.route.snapshot.data['attempts'];
-    for (const userId of this.attempts.data.map(x => x.userId)) {
+    for (const userId of this.attempts.data.map(x => x.quizCopy.userId!)) {
       if (!this.userNames.has(userId)) {
         this.userService.getUserName(userId).pipe(take(1)).subscribe({
           next: (name: string) => this.userNames.set(userId, name)

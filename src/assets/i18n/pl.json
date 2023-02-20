@@ -103,7 +103,8 @@
       "idAccept": "Potwierdź",
       "tryButton": "Podejmij się",
       "quizGetError": "Nie znaleziono takiego quizu",
-      "quizCreateAttemptError": "Nie udało się przystąpić do quizu"
+      "quizCreateAttemptError": "Nie udało się przystąpić do quizu",
+      "quizAuthor": "Autor quizu: {{author}}"
     },
     "try": {
       "next": "Dalej",
@@ -121,6 +122,20 @@
       "emptyList": "Brak uruchomionych podejść",
       "try": "Kontunuuj podejście",
       "results": "Zobacz wyniki"
+    },
+    "result": {
+      "notClosed": "To podejście nie zostało jeszcze ukończone",
+      "title": "Wyniki podejścia",
+      "quizDescription": "Opis quizu: {{description}}",
+      "quizAuthor": "Autor quizu: {{author}}",
+      "sumUp": "Podsumowanie",
+      "endDate": "Zakończono: {{date}}",
+      "correctAnswers": "Poprawnych odpowiedzi: {{n}}",
+      "incorrectAnswers": "Niepoprawnych odpowiedzi: {{n}}",
+      "correctRatio": "Współczynnik poprawnych odpowiedzi: {{n}}",
+      "allCorrect": "Wszystkie poprawne odpowiedzi: {{n}}",
+      "questionCorrect": "Odpowiedź poprawna",
+      "questionIncorrect": "Odpowiedź niepoprawna"
     }
   }
 }

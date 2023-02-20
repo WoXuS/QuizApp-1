@@ -1,0 +1,43 @@
+<div class="page-container">
+  <h1>{{ 'attempt.result.title' | translate }}</h1>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{attempt.quizCopy.name}}</mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <p>{{ 'attempt.result.quizDescription' | translate:{ description: attempt.quizCopy.description } }}</p>
+    <p>{{ 'attempt.result.quizAuthor' | translate:{ author: quizAuthorName } }}</p>
+
+  </mat-expansion-panel>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ 'attempt.result.sumUp' | translate }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ 'attempt.result.endDate' | translate:{ date: getFinishDate(result.submitted) } }}</p>
+      <p>{{ 'attempt.result.correctAnswers' | translate:{ n: result.chosenCorrectAnswers } }}</p>
+      <p>{{ 'attempt.result.incorrectAnswers' | translate:{ n: result.chosenIncorrectAnswers } }}</p>
+      <p>{{ 'attempt.result.correctRatio' | translate:{ n: result.successRatio } }}</p>
+      <p>{{ 'attempt.result.allCorrect' | translate:{ n: result.allCorrectAnswers } }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <ng-container *ngFor="let questionId of attempt.questionOrder; index as i">
+    <mat-expansion-panel *ngIf="getQuestion(questionId); let question">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{question.text}}</mat-panel-title>
+        <mat-panel-description>{{ 'attempt.result.question' + (isQuestionCorrect(question, i) ? 'Correct' : 'Incorrect') | translate }}</mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let answer of question.answers">
+          <span [ngClass]="{'correct': answer.isCorrect, 'incorrect': !answer.isCorrect, 'chosen': isAnswerChosen(answer.id!, i)}">
+            {{answer.text}} {{answer.isCorrect}}
+          </span>
+        </mat-list-item>
+      </mat-list>
+
+    </mat-expansion-panel>
+  </ng-container>
+</div>

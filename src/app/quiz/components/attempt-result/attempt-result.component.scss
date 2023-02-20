@@ -1,0 +1,19 @@
+.page-container {
+  margin: 15px 0;
+
+  mat-card, mat-expansion-panel {
+    margin-bottom: 15px;
+  }
+
+  .correct {
+    color: #44D92E;
+  }
+
+  .incorrect {
+    color: #CC0700;
+  }
+
+  .chosen {
+    font-weight: 600;
+  }
+}
