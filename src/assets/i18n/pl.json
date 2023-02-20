@@ -37,6 +37,20 @@
     "sessionExpired": "Twoja sesja wygasła. Proszę zalogować się ponownie",
     "loggedOut": "Pomyślnie wylogowano"
   },
+  "register": {
+    "title": "Rejestracja",
+    "login": "Login",
+    "email": "Adres e-mail",
+    "fieldIsRequired": "To pole jest wymagane",
+    "password": "Hasło",
+    "passwordHint": "Hasło musi posiadać conajmniej 6 znaków",
+    "confirmPassword": "Potwierdź hasło",
+    "confirmPasswordHint": "Podane hasła różnią się",
+    "loginButton": "Przejdź do logowania",
+    "registerButton": "Załóż nowe konto",
+    "registerError": "Nie udało się założyć nowego konta",
+    "registerSuccess": "Poprawnie założono nowe konto"
+  },
   "quiz": {
     "list": {
       "title": "Lista quizzów",

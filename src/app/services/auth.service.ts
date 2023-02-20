@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
 import { Observable, Subject, take, tap } from "rxjs";
 import { LoginResult } from "../models/login-result";
+import { SaveProfileDto } from "../models/save-profile-dto";
 import { ApiService } from "./api.service";
 import { ToastService } from "./toast.service";
 
@@ -35,6 +36,12 @@ export class AuthService extends ApiService {
   public login(userName: string, password: string): Observable<LoginResult> {
     this.clearStorage();
     return this.http.post<LoginResult>(this.apiUrl + `account/authenticate?username=${userName}&password=${password}`, null)
+      .pipe(tap(data => this.setAccessData(data)));
+  }
+
+  public register(data: SaveProfileDto): Observable<LoginResult> {
+    this.clearStorage();
+    return this.http.post<LoginResult>(this.apiUrl + 'account/register', data)
       .pipe(tap(data => this.setAccessData(data)));
   }
 

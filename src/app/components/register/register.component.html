@@ -1,0 +1,64 @@
+<div class="page-container">
+  <form class="form-container" [formGroup]="form">
+    <h1 class="panelName"> {{ 'register.title' | translate}}</h1>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "register.login" | translate }}</mat-label>
+        <input
+          matInput
+          formControlName="userName"
+          placeholder="{{ 'register.login' | translate }}"
+        />
+        <mat-error *ngIf="form.get('login')?.invalid">{{ "register.fieldIsRequired" | translate }}</mat-error>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "register.email" | translate }}</mat-label>
+        <input
+          matInput
+          formControlName="email"
+          placeholder="{{ 'register.email' | translate }}"
+        />
+        <mat-error *ngIf="form.get('email')?.invalid">{{ "register.fieldIsRequired" | translate }}</mat-error>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "register.password" | translate }}</mat-label>
+        <input
+          matInput
+          type="password"
+          formControlName="password"
+          placeholder="{{ 'register.password' | translate }}"
+          (ngModelChange)="validatePassword()"
+        />
+        <mat-error *ngIf="form.get('password')?.invalid">{{ "register.passwordHint" | translate }}</mat-error>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "register.confirmPassword" | translate }}</mat-label>
+        <input
+          matInput
+          type="password"
+          formControlName="confirmPassword"
+          placeholder="{{ 'register.confirmPassword' | translate }}"
+          (ngModelChange)="validateConfirmPassword()"
+        />
+        <mat-error *ngIf="form.get('confirmPassword')?.invalid">{{ "register.confirmPasswordHint" | translate }}</mat-error>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <button mat-flat-button color="primary" [disabled]="form.invalid" (click)="register()">{{'register.registerButton' | translate}}</button>
+    </p>
+    <p>
+      <button mat-flat-button (click)="goToLogin()">{{'register.loginButton' | translate}}</button>
+    </p>
+  </form>
+</div>

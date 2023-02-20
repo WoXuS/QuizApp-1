@@ -32,7 +32,7 @@
       <button mat-flat-button color="primary" [disabled]="form.invalid" (click)="login()">{{'login.loginButton' | translate}}</button>
     </p>
     <p>
-      <button mat-flat-button>{{'login.registerButton' | translate}}</button>
+      <button mat-flat-button (click)="goToRegister()">{{'login.registerButton' | translate}}</button>
     </p>
   </form>
 </div>

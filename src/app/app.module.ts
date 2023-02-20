@@ -18,6 +18,7 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTranslatedPaginator } from './shared/mat-translated-paginator';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ProfileComponent } from './components/profile/profile.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     LayoutComponent,
     LoginComponent,
     ProfileComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
