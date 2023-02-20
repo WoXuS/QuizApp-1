@@ -19,6 +19,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import { MatCardModule } from '@angular/material/card';
     MatExpansionModule,
     MatSlideToggleModule,
     MatCardModule,
+    MatProgressBarModule,
   ],
   exports: [
     MatTableModule,
@@ -63,6 +65,7 @@ import { MatCardModule } from '@angular/material/card';
     MatExpansionModule,
     MatSlideToggleModule,
     MatCardModule,
+    MatProgressBarModule,
   ]
 })
 export class MaterialModule {}

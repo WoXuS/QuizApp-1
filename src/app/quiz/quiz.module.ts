@@ -1,8 +1,10 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { TranslateModule } from "@ngx-translate/core";
 import { MaterialModule } from "../material.module";
+import { AttemptEntryComponent } from "./components/attempt-entry/attempt-entry.component";
+import { AttemptComponent } from "./components/attempt/attempt.component";
 import { QuizEditorComponent } from "./components/quiz-editor/quiz-editor.component";
 import { QuizListComponent } from "./components/quiz-list/quiz-list.components";
 import { QuizRoutingModule } from "./quiz.routing";
@@ -11,6 +13,8 @@ import { QuizRoutingModule } from "./quiz.routing";
   declarations: [
     QuizListComponent,
     QuizEditorComponent,
+    AttemptEntryComponent,
+    AttemptComponent,
   ],
   imports: [
     CommonModule,
@@ -18,6 +22,7 @@ import { QuizRoutingModule } from "./quiz.routing";
     QuizRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [
 

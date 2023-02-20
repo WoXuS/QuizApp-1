@@ -14,7 +14,8 @@
       "logout": "Wyloguj"
     },
     "quizList": "Lista quizów",
-    "quizAdd": "Dodaj nowy quiz"
+    "quizAdd": "Dodaj nowy quiz",
+    "attemptEntry": "Podejmij się quizu"
   },
   "login": {
     "title": "Logowanie",
@@ -90,6 +91,18 @@
     "confirm": {
       "title": "Potwierdź operację",
       "confirm": "Tak"
+    }
+  },
+  "attempt": {
+    "entry": {
+      "title": "Podejmij się quizu",
+      "tryTitle": "Wpisz identyfikator quizu",
+      "quizId": "Identyfikator quizu",
+      "questionCount": "Liczba pytań w quizie: {{count}}",
+      "idAccept": "Potwierdź",
+      "tryButton": "Podejmij się",
+      "quizGetError": "Nie znaleziono takiego quizu",
+      "quizCreateAttemptError": "Nie udało się przystąpić do quizu"
     }
   }
 }

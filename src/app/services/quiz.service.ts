@@ -2,6 +2,7 @@ import { HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Quiz } from "../models/quiz";
+import { QuizInfo } from "../models/quiz-info";
 import { ApiService } from "./api.service";
 
 @Injectable({
@@ -31,5 +32,9 @@ export class QuizService extends ApiService {
 
   public getQuiz(id: number): Observable<Quiz> {
     return this.http.get<Quiz>(this.apiUrl + `quizzes/${id}`);
+  }
+
+  public getQuizInfo(id: number): Observable<QuizInfo> {
+    return this.http.get<QuizInfo>(this.apiUrl + `quizzes/${id}/info`);
   }
 }

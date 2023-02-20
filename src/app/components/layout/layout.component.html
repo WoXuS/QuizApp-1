@@ -15,6 +15,12 @@
           {{'toolbar.quizAdd' | translate}}
         </div>
       </mat-list-item>
+      <mat-list-item role="listitem" routerLink="./quiz/try" class="dummy-link" (click)="drawer.toggle()">
+        <div class="nav-item">
+          <mat-icon>quiz</mat-icon>
+          {{'toolbar.attemptEntry' | translate}}
+        </div>
+      </mat-list-item>
     </mat-list>
   </mat-drawer>
 
