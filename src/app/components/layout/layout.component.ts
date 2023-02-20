@@ -47,6 +47,5 @@ export class LayoutComponent implements OnInit {
 
   public setActiveComponent(event: Component): void {
     this.isViewLoaded = !!event;
-}
-
+  }
 }
