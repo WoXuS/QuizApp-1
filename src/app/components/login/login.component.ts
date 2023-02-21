@@ -45,4 +45,15 @@ export class LoginComponent implements OnInit {
   public goToRegister(): void {
     this.router.navigate(['register']);
   }
+
+  public debugIsConfirm(): boolean {
+    return !!this.authService.confirmDebug;
+  }
+
+  public debugConfirmEmail(): void {
+    this.authService.debugConfirmEmail().pipe(take(1)).subscribe({
+      next: () => alert("Email został potwierdzony"),
+      error: (e) => alert("Błąd podczas potwierdzania emailu: " + e)
+    });
+  }
 }
