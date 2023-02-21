@@ -178,8 +178,12 @@
     "passwordConfirm": "Potwierdź hasło",
     "passwordConfirmHint": "To pole jest wymagane",
     "saveData": "Zapisz profil",
+    "saveEmail": "Aktualizuj e-mail",
+    "updateEmail": "Zmiana adresu e-mail",
     "updateSuccess": "Poprawnie zaktualizowano dane profilu",
     "updateError": "Nie udało się zaktualizować danych profilu",
+    "updateEmailSuccess": "Poprawnie zaktualizowano adres e-mail, pamiętaj aby go zweryfikować",
+    "updateEmailError": "Nie udało się zaktualizować adresu e-mail",
     "userRoles": "Role użytkownika: ",
     "role": {
       "User": "użytkownik",

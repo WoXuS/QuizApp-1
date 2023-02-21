@@ -35,4 +35,8 @@ export class UserService extends ApiService {
       });
     });
   }
+
+  public saveUserEmail(email: string): Observable<undefined> {
+    return this.http.put<undefined>(this.apiUrl + `account/email?emailAddress=${email}`, null);
+  }
 }

@@ -31,18 +31,6 @@
 
       <p>
         <mat-form-field appearance="outline">
-          <mat-label>{{ "profile.emailEdit" | translate }}</mat-label>
-          <input
-            matInput type="email"
-            formControlName="email"
-            placeholder="{{ 'profile.emailEdit' | translate }}"
-          />
-          <mat-error *ngIf="form.get('email')?.invalid">{{ "profile.emailHint" | translate }}</mat-error>
-        </mat-form-field>
-      </p>
-
-      <p>
-        <mat-form-field appearance="outline">
           <mat-label>{{ "login.password" | translate }}</mat-label>
           <input
             type="password"
@@ -74,4 +62,30 @@
       <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
     </mat-card-footer>
   </form>
+</mat-card>
+<br />
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ 'profile.updateEmail' | translate }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <br />
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "profile.emailEdit" | translate }}</mat-label>
+        <input
+          matInput type="email"
+          [formControl]="emailForm"
+          placeholder="{{ 'profile.emailEdit' | translate }}"
+        />
+        <mat-error *ngIf="emailForm?.invalid">{{ "profile.emailHint" | translate }}</mat-error>
+      </mat-form-field>
+    </p>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button [disabled]="emailForm.invalid" (click)="saveEmail()">{{ 'profile.saveEmail' | translate }}</button>
+  </mat-card-actions>
+  <mat-card-footer>
+    <mat-progress-bar mode="indeterminate" *ngIf="isLoadingEmail"></mat-progress-bar>
+  </mat-card-footer>
 </mat-card>
