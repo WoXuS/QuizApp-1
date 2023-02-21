@@ -34,5 +34,8 @@
     <p>
       <button mat-flat-button (click)="goToRegister()">{{'login.registerButton' | translate}}</button>
     </p>
+    <p *ngIf="debugIsConfirm()">
+      <button mat-flat-button color="warn" (click)="debugConfirmEmail()">POTWIERDŹ EMAIL</button>
+    </p>
   </form>
 </div>

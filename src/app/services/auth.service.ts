@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
 import { Observable, Subject, take, tap } from "rxjs";
+import { EmailConfirmDto } from "../models/email-confirm-dto";
 import { LoginResult } from "../models/login-result";
 import { SaveProfileDto } from "../models/save-profile-dto";
 import { ApiService } from "./api.service";
@@ -15,6 +16,8 @@ export class AuthService extends ApiService {
   private readonly ACCESS_TOKEN_NAME = "accessToken";
   private readonly REFRESH_TOKEN_NAME = "refreshToken";
   private logOutSubj = new Subject<void>();
+
+  public confirmDebug: EmailConfirmDto | null = null;
 
   public get logOutObs(): Observable<void> {
     return this.logOutSubj.asObservable();
@@ -39,10 +42,10 @@ export class AuthService extends ApiService {
       .pipe(tap(data => this.setAccessData(data)));
   }
 
-  public register(data: SaveProfileDto): Observable<LoginResult> {
+  public register(data: SaveProfileDto): Observable<EmailConfirmDto> {
     this.clearStorage();
-    return this.http.post<LoginResult>(this.apiUrl + 'account/register', data)
-      .pipe(tap(data => this.setAccessData(data)));
+    return this.http.post<EmailConfirmDto>(this.apiUrl + 'account/register', data)
+      .pipe(tap(data => this.confirmDebug = data));
   }
 
   public refreshToken(tokens: LoginResult): Observable<LoginResult> {
@@ -87,5 +90,9 @@ export class AuthService extends ApiService {
   private afterSignOutActions(): void {
     this.clearStorage();
     this.router.navigate(['login']).then(() => this.toast.show(this.translate.instant('login.loggedOut')));
+  }
+
+  public debugConfirmEmail(): Observable<void> {
+    return this.http.patch<void>(this.apiUrl + 'account/confirmEmail', this.confirmDebug);
   }
 }

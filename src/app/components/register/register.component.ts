@@ -35,9 +35,10 @@ export class RegisterComponent {
   public register(): void {
     const profile: SaveProfileDto = this.form.value;
     this.authService.register(profile).pipe(take(1)).subscribe({
-      next: () => {
+      next: (data) => {
         this.toastService.show(this.translate.instant('register.registerSuccess'));
-        this.router.navigate(['/']);
+        this.router.navigate(['login']).then(() => alert("Adres email nie jest potwierdzony. W celu testu można go potwierdzić używając Swaggera lub klikając przycisk na ekranie logowania (dopóki strona nie zostanie przeładowana). Kod potwierdzenia dostępny jest w konsoli developerskiej."));
+        console.info('EMAIL CODE: ', data.emailConfirmationtoken);
       },
       error: (e) => {
         console.error(e);
